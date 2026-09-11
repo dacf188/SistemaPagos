@@ -3,11 +3,13 @@ package sistemapagosdiegocalderon;
 public class EmpleadoPorComision extends Persona{
     private double ventas;
     private double porcentajeComision;
+    
+    public EmpleadoPorComision() {
+        //ASIGNAMOS VALORES ANTES QUE SE EJECUTE
+        setTipo("Por Comision");
+    }
     @Override
-    public void ingresar (){
-        this.tipo = "Por Comision";
-        System.out.println("\nEmpleado " + tipo);
-        super.ingresar();
+    public void ingresarEspecificaciones (){
         System.out.println("Ingrese sus ventas");
         ventas = scanner.nextDouble();
         System.out.println("Ingrese su porcentaje de comision");

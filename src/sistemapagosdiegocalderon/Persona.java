@@ -1,5 +1,6 @@
 package sistemapagosdiegocalderon;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public abstract class Persona {
@@ -44,20 +45,30 @@ public abstract class Persona {
     public String getTipo (){
         return tipo;
     }
-    public void SetTipo (String tipo){
+    public void setTipo (String tipo){
         this.tipo = tipo;
     }
    
-    public void ingresar (){
-        System.out.println("Ingrese su nombre");
-        nombre = scanner.nextLine();
-        System.out.println("Ingrese su DPI");
-        dpi = scanner.nextLine();
-        System.out.println("Ingrese su salario base");
-        salarioBase = scanner.nextDouble();
-        scanner.nextLine();
+    public boolean ingresar (){
+        System.out.println("\nEmpleado " + getTipo());
+        try {
+            System.out.println("Ingrese su nombre");
+            nombre = scanner.nextLine();
+            System.out.println("Ingrese su DPI");
+            dpi = scanner.nextLine();
+            System.out.println("Ingrese su salario base");
+            salarioBase = scanner.nextDouble();
+            scanner.nextLine();
+            ingresarEspecificaciones();
+            return true;
+        } catch (InputMismatchException e) {
+            System.out.println("TIPO DE DATO INVALIDO");
+            System.out.println(e.toString());
+            scanner.nextLine();
+            return false;
+        }
     }
-    
+    public abstract void ingresarEspecificaciones ();
     public abstract double pagarSalario();
     
 }
