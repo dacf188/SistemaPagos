@@ -59,7 +59,11 @@ public abstract class Persona {
             System.out.println("Ingrese su salario base");
             salarioBase = scanner.nextDouble();
             scanner.nextLine();
-            ingresarEspecificaciones();
+            if (salarioBase > 0) {
+                ingresarEspecificaciones();
+            } else {
+                System.out.println("ERROR, DEBE AGREGAR UNA CANTIDAD MAYOR A 0");
+            }
             return true;
         } catch (InputMismatchException e) {
             System.out.println("TIPO DE DATO INVALIDO");
